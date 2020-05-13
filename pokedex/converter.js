@@ -13,4 +13,11 @@ function convertCSVToJSON(inputName, outputName) {
 		.pipe(createWriteStream(`../output/${outputName}.json`));
 }
 
+function reverseStr(str, len) {
+	const trimmedStr = str.substr(0, len);
+	const reversedStr = trimmedStr.split('').reverse().join('');
+	return reversedStr;
+}
+
 module.exports.convertCSVToJSON = convertCSVToJSON;
+module.exports.reverseStr = reverseStr;
