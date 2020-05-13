@@ -1,5 +1,6 @@
 const meow = require('meow');
 const minimist = require('minimist');
+const converter = require('./converter');
  
 const cli = meow(`
     Options
@@ -34,4 +35,5 @@ const args = minimist(process.argv.slice(2), {
         return false;
     }
 });
-console.log(args);
+
+converter.convertCSVToJSON(args.file, args.name);
