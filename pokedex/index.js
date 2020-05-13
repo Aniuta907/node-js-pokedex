@@ -34,7 +34,7 @@ const args = minimist(process.argv.slice(2), {
 		l: 'length',
 		t: 'text'
 	},
-	unknown: (arg) => {
+	invalid: (arg) => {
 		console.error('Invalid parameter:', arg);
 		cli.showHelp();
 		return false;
@@ -42,7 +42,7 @@ const args = minimist(process.argv.slice(2), {
 });
 
 if (args.name && args.file) converter.convertCSVToJSON(args.file, args.name);
-else if (args.length) console.log(converter.reverseStr(args.text, args.length));
+else if (args.length && args.text) console.log(converter.reverseStr(args.text, args.length));
 else {
 	console.error('Please use the help below');
 	cli.showHelp();
