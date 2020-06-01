@@ -6,7 +6,7 @@ server.use(express.json());
 
 const db = JSON.parse(fs.readFileSync('./db.json'));
 
-//GET all pokemons
+//GET all pokemons or pokemons with specified name
 server.get('/pokemons', function(req, res) {
 	const pokemonName = req.query.name;
 	let pok;
@@ -108,6 +108,28 @@ server.get('/caught', function(req, res) {
 		message: 'These pokemons were caught',
 		data: {
 			pokemons: caughtDb
+		}
+	});
+});
+
+//Catch specified pokemon
+server.put('/caught/:pokemonId', function(req, res) {
+	const pokemonId = parseInt(req.params.pokemonId);
+	const pok = db.find((pokemon) => pokemon.id === pokemonId);
+
+	if (pok === undefined || pok === null) {
+		return res.status(404).json({
+			status: 'fail',
+			message: 'Invalid Id'
+		});
+	}
+
+	pok.caught = true;
+
+	res.status(200).json({
+		status: 'success',
+		data: {
+			pokemon: pok
 		}
 	});
 });
