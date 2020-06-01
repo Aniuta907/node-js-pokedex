@@ -47,13 +47,11 @@ server.post('/pokemons', function(req, res) {
 		...req.body
 	};
 	db.push(newPokemon);
-	res.send('Add a pokemon');
+	res.status(200).send({ message: 'Pokemon was added.' });
 });
 
 //PUT edited pokemon in-place of pokemon with specified id
 server.put('/pokemons/:pokemonId', function(req, res) {
-	res.send('Update the pokemon');
-
 	const pokemonId = parseInt(req.params.pokemonId);
 	const pok = db.find((pokemon) => pokemon.id === pokemonId);
 
@@ -81,7 +79,31 @@ server.put('/pokemons/:pokemonId', function(req, res) {
 
 //DELETE pokemon with specified id
 server.delete('/pokemons/:pokemonId', function(req, res) {
-	res.send('Delete the pokemon');
+	const pokemonId = parseInt(req.params.pokemonId);
+	const pok = db.find((pokemon) => pokemon.id === pokemonId);
+
+	if (pok === undefined || pok === null) {
+		return res.status(404).json({
+			status: 'fail',
+			message: 'Invalid Id'
+		});
+	}
+
+	db.splice(db.indexOf(pok), 1);
+
+	res.status(200).send({ message: 'Pokemon was deleted.' });
+});
+
+//GET all caught pokemons
+server.get('/caught', function(req, res) {
+	const caughtDb = db.filter((pokemon) => pokemon.caught === true);
+
+	res.status(200).json({
+		message: 'These pokemons were caught',
+		data: {
+			pokemons: caughtDb
+		}
+	});
 });
 
 //START SERVER
