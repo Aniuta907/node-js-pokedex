@@ -11,7 +11,7 @@ server.get('/pokemons', function(req, res) {
 	const pokemonName = req.query.name;
 	let pok;
 
-	if (pokemonName) pok = db.filter((pokemon) => pokemon.name === pokemonName);
+	if (pokemonName) pok = db.filter((pokemon) => pokemon.name.indexOf(pokemonName) != -1);
 	else pok = db;
 
 	return res.status(200).json({
@@ -111,27 +111,6 @@ server.get('/caught', function(req, res) {
 		}
 	});
 });
-
-//GET pokemon with specified name
-// server.get('/pokemons', async function(req, res) {
-// 	const pokemonName = req.query.name;
-
-// 	const pok = db.filter((pokemon) => pokemon.name === pokemonName);
-
-// 	if (pok === []) {
-// 		return res.status(404).json({
-// 			status: 'fail',
-// 			message: 'there is no such pokemon'
-// 		});
-// 	}
-
-// 	res.status(200).json({
-// 		status: 'success',
-// 		data: {
-// 			pok
-// 		}
-// 	});
-// });
 
 //START SERVER
 server.listen(3000, function() {
