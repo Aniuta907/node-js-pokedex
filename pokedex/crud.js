@@ -18,7 +18,7 @@ server.get('/pokemons', function(req, res) {
 
 //GET pokemon with specified id
 server.get('/pokemons/:pokemonId', function(req, res) {
-	const pokemonId = parseInt(req.params.id);
+	const pokemonId = parseInt(req.params.pokemonId);
 	const pok = db.find((pokemon) => pokemon.id === pokemonId);
 
 	if (pok === undefined || pok === null) {
@@ -53,6 +53,30 @@ server.post('/pokemons', function(req, res) {
 //PUT edited pokemon in-place of pokemon with specified id
 server.put('/pokemons/:pokemonId', function(req, res) {
 	res.send('Update the pokemon');
+
+	const pokemonId = parseInt(req.params.pokemonId);
+	const pok = db.find((pokemon) => pokemon.id === pokemonId);
+
+	const newPokemon = {
+		...pok,
+		...req.body
+	};
+
+	if (pok === undefined || pok === null) {
+		return res.status(404).json({
+			status: 'fail',
+			message: 'Invalid Id'
+		});
+	}
+
+	db.splice(db.indexOf(pok), 1, newPokemon);
+
+	res.status(200).json({
+		status: 'success',
+		data: {
+			pokemon: newPokemon
+		}
+	});
 });
 
 //DELETE pokemon with specified id
