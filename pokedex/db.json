@@ -1,0 +1,86 @@
+[
+	{
+		"name": "bulbasaur",
+		"id": 1,
+		"damage": 1,
+		"birthdate": "2020-01-01",
+		"caught": true
+	},
+	{
+		"name": "ivysaur",
+		"id": 2,
+		"damage": 2,
+		"birthdate": "2020-01-02",
+		"caught": true
+	},
+	{
+		"name": "venusaur",
+		"id": 3,
+		"damage": 333,
+		"birthdate": "2020-01-03",
+		"caught": false
+	},
+	{
+		"name": "charmander",
+		"id": 4,
+		"damage": 4,
+		"birthdate": "2020-01-04",
+		"caught": true
+	},
+	{
+		"name": "charmeleon",
+		"id": 5,
+		"damage": 55,
+		"birthdate": "2020-01-05",
+		"caught": false
+	},
+	{
+		"name": "charizard",
+		"id": 6,
+		"damage": 67,
+		"birthdate": "2020-01-06",
+		"caught": true
+	},
+	{
+		"name": "squirtle",
+		"id": 7,
+		"damage": 7,
+		"birthdate": "2020-01-07",
+		"caught": false
+	},
+	{
+		"name": "wartortle",
+		"id": 8,
+		"damage": 8,
+		"birthdate": "2020-01-08",
+		"caught": false
+	},
+	{
+		"name": "blastoise",
+		"id": 9,
+		"damage": 99,
+		"birthdate": "2020-01-09",
+		"caught": false
+	},
+	{
+		"name": "caterpie",
+		"id": 10,
+		"damage": 0,
+		"birthdate": "2020-01-10",
+		"caught": true
+	},
+	{
+		"name": "metapod",
+		"id": 11,
+		"damage": 11,
+		"birthdate": "2020-01-11",
+		"caught": false
+	},
+	{
+		"name": "butterfree",
+		"id": 12,
+		"damage": 0,
+		"birthdate": "2020-01-12",
+		"caught": true
+	}
+]
